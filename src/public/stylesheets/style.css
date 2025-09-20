@@ -1,0 +1,161 @@
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
+
+@font-face {
+  font-family: 'helvetica';
+  src: url('/fonts/helvetica.ttf');
+}
+
+@font-face {
+  font-family: 'meyzie';
+  src: url('/fonts/meyzie.otf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.title {
+  font-family: 'meyzie';
+  font-size: 72px;
+}
+
+.title img {
+  height: 75px;
+  margin-left: -20px;
+  margin-top: -17px;
+}
+
+.stroke {
+  -webkit-text-stroke: 1px black;
+  text-shadow: black 1px 2px;
+}
+
+.subtitle {
+  font-family: 'helvetica';
+  color: black;
+  font-size: 13px;
+  margin-top: -23px;
+}
+
+.bordered {
+  border: black solid 2px;
+  box-shadow: 2px 2px black;
+}
+
+.form-control:focus {
+  border: black solid 2px;
+  box-shadow: 2px 2px black;
+}
+
+.hover-black {
+  transition: all 0.3s;
+}
+
+.hover-black:hover {
+  color: black !important;
+}
+
+.button {
+  font-family: 'helvetica';
+  color: black;
+  width: 250px;
+}
+
+.btn:hover {
+  border: black solid 2px;
+  box-shadow: 2px 2px black;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+form button {
+  justify-self: center;
+}
+
+.modal-content {
+  border: black solid 2px;
+  box-shadow: 3px 4px black;
+}
+
+#modal .modal-body {
+  height: 80vh; /* 80% of viewport height */
+}
+
+#modal img {
+  height: 15px;
+}
+
+#close {
+  border: black solid 2px;
+  box-shadow: 1px 2px 0px black;
+  margin-top: -2px !important;
+}
+
+header a, h1 {
+  color: #D8682F;
+  -webkit-text-stroke: 1px black;
+  text-shadow: black 1px 2px;
+}
+
+nav {
+  background-color: #E78319;
+  border: black solid 2px;
+  box-shadow: 3px 3px 0px black;
+  font-family: 'helvetica' !important;
+}
+
+#movie-bar {
+  border: black solid 2px;
+  box-shadow: 2px 2px 0px black;
+  margin-top: -18px;
+}
+
+#feature, #reset, button, #index-button {
+  border: black solid 2px;
+  box-shadow: 2px 2px 0px black;
+}
+
+#movie-bar .vr {
+  height: 1em !important;
+}
+
+th {
+  background-color: #DC5B24 !important;
+}
+
+td {
+  background-color: #E9C177 !important;
+}
+
+table {
+  overflow: hidden;
+  outline: 3px solid black;
+  font-family: 'helvetica';
+}
+
+input[type=search] {
+  border: 2px solid black !important;
+  box-shadow: 2px 2px 0px black;
+  font-family: 'helvetica' !important;
+}
+
+.dropdown button {
+  font-family: 'helvetica' !important;
+  color: black;
+}
+
+strong {
+  font-weight: normal;
+  font-family: 'helvetica';
+}

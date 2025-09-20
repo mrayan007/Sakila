@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Browse | Sakila</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="icon" href="/images/cd3.gif">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+
+    <style>
+      body {
+        background-image: url('/images/bg.png');
+      }
+
+      .vr {
+        opacity: 100%;
+        background-color: black;
+        width: 2px;
+      }
+    </style>
+  </head>
+  <body class="px-5">
+
+    <header class="d-flex flex-column align-items-center w-100">
+      <a href="/">
+        <span class="title stroke ms-5" style="color: #3A706C;">
+          Sakila
+          <img src="/images/cd3.gif">
+        </span>
+      </a>
+      <span class="subtitle fs-6">BROWSE ALL MOVIES</span>
+    </header>
+    
+    <nav class="nav mt-4 mb-3 align-items-center gap-3 sticky-top py-2 px-2 mx-auto d-flex justify-content-center rounded-pill" style="width: fit-content; top: 10px;">
+      <div class="dropdown">
+        <button class=" dropdown-toggle rounded-pill px-3 py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Sort By
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/movies?sort=title&order=<%= order %>&genre=<%= genre %>&rating=<%= rating %>">Title</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=length&order=<%= order %>&genre=<%= genre %>&rating=<%= rating %>">Length</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=rental_rate&order=<%= order %>&genre=<%= genre %>&rating=<%= rating %>">Price</a></li>
+        </ul>
+      </div>
+      <span class="fw-light"><%= sort == 'rental_rate'? 'PRICE' : sort.toUpperCase() %></span>
+      <div class="dropdown">
+        <button class=" dropdown-toggle rounded-pill px-3 py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Order
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=asc&genre=<%= genre %>&rating=<%= rating %>">ASC</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=desc&genre=<%= genre %>&rating=<%= rating %>">DESC</a></li>
+        </ul>
+      </div>
+      <span class="fw-light"><%= order.toUpperCase() %></span>
+      <div class="dropdown">
+        <button class="dropdown-toggle rounded-pill px-3 py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Genre
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&rating=<%= rating %>">All</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Action&rating=<%= rating %>">Action</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Animation&rating=<%= rating %>">Animation</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Children&rating=<%= rating %>">Children</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Classics&rating=<%= rating %>">Classics</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Comedy&rating=<%= rating %>">Comedy</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Documentary&rating=<%= rating %>">Documentary</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Drama&rating=<%= rating %>">Drama</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Family&rating=<%= rating %>">Family</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Foreign&rating=<%= rating %>">Foreign</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Games&rating=<%= rating %>">Games</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Horror&rating=<%= rating %>">Horror</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Music&rating=<%= rating %>">Music</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=New&rating=<%= rating %>">New</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Sci-Fi&rating=<%= rating %>">Sci-Fi</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Sports&rating=<%= rating %>">Sports</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=Travel&rating=<%= rating %>">Travel</a></li>
+        </ul>
+      </div>
+      <span class="fw-light"><%= genre? genre.toUpperCase() : 'ALL' %></span>
+      <div class="dropdown">
+        <button class="dropdown-toggle rounded-pill px-3 py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Rating
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=<%= genre %>">All</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=<%= genre %>&rating=PG">PG</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=<%= genre %>&rating=G">G</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=<%= genre %>&rating=NC-17">NC-17</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=<%= genre %>&rating=PG-13">PG-13</a></li>
+          <li><a class="dropdown-item" href="/movies?sort=<%= sort %>&order=<%= order %>&genre=<%= genre %>&rating=R">R</a></li>
+        </ul>
+      </div>
+      <span class="fw-light"><%= rating? rating.toUpperCase() : 'ALL' %></span>
+      <form action="/movies" method="get">
+        <input type="hidden" name="sort" value="<%= sort %>">
+        <input type="hidden" name="order" value="<%= order %>">
+        <input type="hidden" name="genre" value="<%= genre %>">
+        <input type="hidden" name="rating" value="<%= rating %>">
+
+        <div class="d-inline-block" style="width: 200px;">
+          <input type="search" name="search" class="form-control form-control-sm rounded-pill" placeholder="Search..." value="<%= search || '' %>">
+        </div>
+      </form>
+
+      <a href="/movies" class="btn bg-danger btn-sm text-black rounded-pill" id="reset">Reset</a>
+
+      <% if (isAuthenticated) { %>
+        <div class="vr my-1 rounded"></div>
+        <a href="/wishlist" data-bs-toggle="modal" data-bs-target="#modal" data-value="wishlist" class="btn rounded-pill bordered text-black" style="background-color: #3A706C;">Wishlist</a>
+        <a href="/auth/logout" class="btn rounded-pill bordered text-black" style="background-color: #E9C177;">Log Out</a>
+      <% } %>
+    </nav>
+    <% if (movies.length > 0) { %>
+      <div class="container">
+        <table class="table table-hover rounded-4 border-black">
+            <tr>
+                <th>TITLE AND DESCRIPTION</th>
+                <th>GENRE</th>
+                <th>LENGTH</th>
+                <th>RATING</th>
+                <th>PRICE</th>
+            </tr>
+            <% movies.forEach(movie => { %>
+              <tr class="table-group-divider align-middle" data-bs-toggle="modal" data-bs-target="#modal" data-value="movie" data-id="<%= movie.film_id %>" style="cursor: pointer;">
+                  <td>
+                    <%= movie.title %>
+                    <br>
+                    <span style="font-family: 'Helvetica Neue', sans-serif;"><%= movie.description %></span>
+                  </td>
+                  <td><%= movie.category %></td>
+                  <td><%= movie.length %></td>
+                  <td><%= movie.rating %></td>
+                  <td>$<%= movie.rental_rate %></td>
+              </tr>
+            <% }) %>
+        </table>
+      </div>
+    <% } else { %>
+      <div class="text-center mt-5 pt-5">
+        <h1 class="text-danger" style="font-family: 'meyzie';">404 Movie not Found</h1>
+        <span class="text-black fs-5" style="font-family: helvetica;">Take a look at something else.</span>
+      </div>
+    <% } %>
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content rounded-5"  style="background-color: #2B8072;">
+          <div class="modal-body">
+            <div class="bg-light rounded-circle position-absolute end-0 m-3 px-2 pb-1" style="width: fit-content; cursor: pointer;" id="close">
+              <img class="" src="/images/close.png" data-bs-dismiss="modal" aria-label="Close">
+            </div>
+            <iframe src="" class="w-100 h-100"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/javascripts/movie.details.js"></script>
+  </body>
+</html>

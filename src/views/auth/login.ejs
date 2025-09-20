@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Log In | Sakila</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="icon" href="/images/cd3.gif">
+    <style>
+      .button {
+        font-family: 'helvetica';
+        color: black;
+        width: 250px;
+      }
+
+      .btn:hover {
+        border: black solid 2px;
+        box-shadow: 2px 2px black;
+      }
+
+      .form-control {
+        width: 250px;
+        font-family: 'helvetica';
+      }
+
+      body {
+        background-image: url('/images/bg.png');
+        background-size: cover;
+      }
+
+      form p {
+        font-family: 'helvetica';
+        color: black;
+        font-size: 14px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="d-flex flex-column justify-content-center align-items-center vh-100">
+    
+    <a href="/">
+      <span class="title stroke ms-2" style="color: #3A706C;">
+        Sakila
+        <img src="/images/cd3.gif">
+      </span>
+    </a>
+    
+    <span class="subtitle">LARGEST DVD LIBRARY IN THE WORLD</span>
+
+    <form action="/auth/login" method="POST" class="d-grid">
+      <input class="form-control rounded-pill mt-4 bordered" type="text" placeholder="username" name="username">
+
+      <% if (message) { %>
+        <p class="mt-2"><%= message %></p>
+      <% } %>
+      
+      <input class="form-control rounded-pill mt-2 bordered" type="password" placeholder="password" name="password">
+      <button class="btn button bordered rounded-pill mt-2" style="background-color: #E19B21; width: 200px;" type="submit">Log In</button>
+    </form>
+
+    <p class="mt-2" style="font-family: helvetica; font-size: 14px;">Don't have an account? <a class="hover-black text-dark" href="/auth/register">Register</a></p>
+  </body>
+</html>

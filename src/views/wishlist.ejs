@@ -1,0 +1,14 @@
+<html>
+    <head></head>
+    <body>
+        <p>
+            <% if (!films) { %>
+                No films here.
+            <% } else { %>
+                <% films.forEach(film => { %>
+                    <%= film.title %>
+                <% }) %>
+            <% } %>
+        </p>
+    </body>
+</html>
