@@ -36,7 +36,7 @@ jobs:
           path: .
 
       - name: test app with cypress
-        run: npx start-server-and-test start https://localhost:3000 "cypress run"
+        run: npx start-server-and-test start http://localhost:3000 "cypress run"
 
   deploy:
     runs-on: ubuntu-latest
