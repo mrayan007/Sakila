@@ -26,6 +26,20 @@ const usersDao = {
                 }
             );
         }
+    },
+
+    update: (user, newUser, callback) => {
+        pool.query(`
+            UPDATE user
+            SET username = ?
+            WHERE username = ?;
+            `,
+            [newUser, user],
+            error => {
+                if (error) return callback(error);
+                return callback();
+            }
+        );
     }
 }
 

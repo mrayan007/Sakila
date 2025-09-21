@@ -1,0 +1,36 @@
+{
+  "movies": [
+    {
+      "film_id": 1,
+      "title": "Toy Story",
+      "description": "A story about toys coming to life.",
+      "category": "Animation",
+      "length": 81,
+      "rating": "G",
+      "release_year": 1995,
+      "rental_rate": 2.99,
+      "rental_duration": 7,
+      "replacement_cost": 20,
+      "special_features": "Deleted Scenes,Behind the Scenes",
+      "first_name": "Tom",
+      "last_name": "Hanks",
+      "inventory": { "inventory_count": 5 }
+    },
+    {
+      "film_id": 2,
+      "title": "The Matrix",
+      "description": "A hacker discovers reality is a simulation.",
+      "category": "Action",
+      "length": 136,
+      "rating": "R",
+      "release_year": 1999,
+      "rental_rate": 3.99,
+      "rental_duration": 5,
+      "replacement_cost": 25,
+      "special_features": "Commentary,Trailers",
+      "first_name": "Keanu",
+      "last_name": "Reeves",
+      "inventory": { "inventory_count": 3 }
+    }
+  ]
+}

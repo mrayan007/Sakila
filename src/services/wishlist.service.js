@@ -8,11 +8,30 @@ const wishlistService = {
         });
     },
 
-    get: (userId, callback) => {
-        wishlistDao.get(userId, (error, films) => {
+    get: (data, callback) => {
+        const {userId, filmId} = data;
+
+        wishlistDao.get(userId, filmId, (error, films) => {
+             console.log('wishlistDao.get result:', films);  
             if (error) return callback(error, null);
-            if (films.length === 0) return callback(null, null);
-            return callback(null, films);
+            if (filmId) {
+                // single movie check: return true/false
+                const wish = films.length > 0;
+                 console.log('wish for movie', filmId, '=', wish);
+                return callback(null, wish);
+            } else {
+                // no filmId: return all wishlisted movies
+                return callback(null, films); // array of movies
+            }
+        });
+    },
+
+    delete: (filmId, userId, callback) => {
+        console.log(filmId);
+        
+        wishlistDao.delete(filmId, userId, error => {
+            if (error) return callback(error);
+            return callback(null);
         });
     }
 }

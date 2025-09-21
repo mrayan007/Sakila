@@ -111,7 +111,11 @@
       <% if (isAuthenticated) { %>
         <div class="vr my-1 rounded"></div>
         <a href="/wishlist" data-bs-toggle="modal" data-bs-target="#modal" data-value="wishlist" class="btn rounded-pill bordered text-black" style="background-color: #3A706C;">Wishlist</a>
+        <a data-bs-toggle="modal" data-bs-target="#modal" data-value="account" class="btn rounded-pill bordered text-black" style="background-color: #D8682F;">Account</a>
         <a href="/auth/logout" class="btn rounded-pill bordered text-black" style="background-color: #E9C177;">Log Out</a>
+      <% } else { %>
+        <div class="vr my-1 rounded"></div>
+        <a href="/auth/login" class="btn rounded-pill bordered text-black" style="background-color: #E19B21;">Log In</a>
       <% } %>
     </nav>
     <% if (movies.length > 0) { %>
@@ -141,7 +145,7 @@
       </div>
     <% } else { %>
       <div class="text-center mt-5 pt-5">
-        <h1 class="text-danger" style="font-family: 'meyzie';">404 Movie not Found</h1>
+        <h1 class="text-danger" style="font-family: 'meyzie'; color: #2B8072;">404 Movie not Found</h1>
         <span class="text-black fs-5" style="font-family: helvetica;">Take a look at something else.</span>
       </div>
     <% } %>

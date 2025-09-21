@@ -17,6 +17,15 @@ const usersService = {
                 return callback(null, user[0]);
             });
         }
+    },
+
+    update: (data, callback) => {
+        const { user, newUser } = data;
+
+        usersDao.update(user, newUser, error => {
+            if (error) return callback(error);
+            return callback();
+        });
     }
 }
 

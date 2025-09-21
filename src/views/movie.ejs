@@ -63,12 +63,21 @@
                 <% if (!inventory) { %>
                     <p>We have no DVD's in stock.</p>
                 <% } else { %>
-                    <p>We have <%= inventory.total %> DVD's in stock.</p>
+                    <p>We have <%= inventory.inventory_count %> DVD's in stock.</p>
                 <% } %>
-                <form action="/wishlist" method="POST">
-                    <input type="hidden" name="movieId" value="<%= movie[0].film_id %>">
-                    <button class="btn bordered rounded-pill text-black">Wishlist</button>
-                </form>
+                <% if (!wish) { %>
+                    <form action="/wishlist" method="POST">
+                        <input type="hidden" name="movieId" value="<%= movie[0].film_id %>">
+                        <button class="btn bordered rounded-pill text-black">Wishlist</button>
+                    </form>
+                <% } else { %>
+                    <button class="btn bordered rounded-pill text-black">Wishlisted</button>
+                    <form action="/wishlist/delete" method="POST" class="d-inline">
+                        <input type="hidden" name="filmId" value="<%= movie[0].film_id %>">
+                        <input type="hidden" name="url" value="<%= req.originalUrl %>">
+                        <button class="btn bordered rounded-pill text-black bg-danger">Remove</button>
+                    </form>
+                <% } %> 
             </div>
         <% } %>
     </body>

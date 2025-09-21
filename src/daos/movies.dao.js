@@ -37,7 +37,7 @@ const moviesDao = {
             }
 
             pool.query(query, parameters, (err, res) => {
-                if (err) return callback(err);
+                if (err) return callback(err, null);
                 return callback(undefined, res);
             });
         }
@@ -51,10 +51,10 @@ const moviesDao = {
                         JOIN category c ON fc.category_id = c.category_id 
                         WHERE f.film_id = ${movieId};`, (err, res) => {
                 if (err) {
-                    return callback(err)
+                    return callback(err, null)
                 }
 
-                return callback(undefined, res)
+                return callback(null, res)
             })
         }
     }

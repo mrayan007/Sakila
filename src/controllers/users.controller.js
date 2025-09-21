@@ -18,6 +18,26 @@ const usersController = {
             
             response.json(result);
         });
+    },
+
+    update: (request, response, next) => {
+        const user = request.session.user.username;
+        const {newUser} = request.body;
+
+        const data = {user, newUser};
+
+        usersService.get(newUser, (error, userTaken) => {
+            if (error) return next(error);
+
+            if (userTaken) return response.render('account', {update: true, message: 'User is taken, choose another name.'});
+
+            usersService.update(data, error => {
+                if (error) return next(error);
+
+                request.session.user.username = newUser;
+                response.redirect('/account');
+            });
+        });     
     }
 }
 

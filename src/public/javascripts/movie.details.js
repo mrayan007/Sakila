@@ -12,5 +12,9 @@ modal.addEventListener('show.bs.modal', e => {
             break;
         case 'wishlist':
             iframe.src = '/wishlist';
+            break;
+        case 'account':
+            iframe.src = '/account';
+            break;
     }
 });

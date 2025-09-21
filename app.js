@@ -12,6 +12,7 @@ var authRouter = require('./src/routes/auth.route');
 var moviesRouter = require('./src/routes/movies');
 var usersRouter = require('./src/routes/users.route');
 var wishlistRouter = require('./src/routes/wishlist.route');
+var accountRouter = require('./src/routes/account.route');
 
 var app = express();
 
@@ -45,6 +46,7 @@ app.use('/movies', moviesRouter);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/wishlist', wishlistRouter);
+app.use('/account', accountRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -59,11 +61,14 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   switch (err.status) {
+    case (401):
+      res.status(401).send('401 error forbidden entry not authorized');
+      break;
     case (404):
-      res.status(404).send('404 error');
+      res.status(404).send('404 error page not found');
       break;
     default:
-      res.status(500).send('500 error');
+      res.status(500).send('500 error server crash');
   }
 });
 

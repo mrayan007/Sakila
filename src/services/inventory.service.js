@@ -5,15 +5,7 @@ const inventoryService = {
         inventoryDao.get(filmId, (error, inventory) => {
             if (error) return callback(error, null);
             if (inventory.length === 0) return callback(null, null);
-
-            let totalInventory = 0;
-
-            inventory.forEach(i => {
-                totalInventory += i.inventory_count;
-            });
-
-            const data = {stores: inventory, total: totalInventory};
-            return callback(null, data);
+            return callback(null, inventory[0]);
         });
     }
 }

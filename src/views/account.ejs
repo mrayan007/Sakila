@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <style>
+            body {
+                background-color: #2B8072;
+            }
+
+            div, a, .btn, input {
+                font-family: 'helvetica' !important;
+            }
+
+            form {
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column w-100 align-items-center">
+        <span class="title stroke ms-2 mt-5" style="color: #D8682F;">
+            Account
+            <img src="/images/cd3.gif">
+        </span>
+        
+        <div>
+            <span class="fs-3 text-black mb-2 align-middle me-2" style="font-family: 'helvetica';">Welcome</span>
+            <% if (!update) { %>
+                <div class="bordered rounded-pill bg-light px-3 py-1 fs-5 me-2 d-inline align-middle"><%= user.username %></div>
+                <a href="/account/update" class="bordered rounded-pill btn text-black" style="background-color: E19B21;">Edit</a>
+            <% } else { %>
+                <form action="/users" method="POST" class="d-flex flex-row gap-2">
+                    <input type="text" class="form-control bordered rounded-pill" placeholder="new username" name="newUser">
+                    <button class="bordered rounded-pill btn text-black bg-success" type="submit">Confirm</button>
+                </form>
+                <% if (message) { %>
+                    <p class="text-black text-center mt-2"><%= message %></p>
+                <% } %>
+            <% } %>
+        </div>
+        <a href="/wishlist" class="btn rounded-pill bordered text-black mt-3" style="background-color: #E9C177;">See Wishlist</a>
+    </body>
+</html>

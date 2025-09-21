@@ -1,14 +1,44 @@
 <html>
-    <head></head>
-    <body>
-        <p>
-            <% if (!films) { %>
-                No films here.
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <style>
+            p {
+                font-family: 'helvetica';
+            }
+
+            body {
+                background-color: #2B8072;
+            }
+
+            td {
+                padding: 10px !important;
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column w-100 align-items-center">
+        <span class="title stroke ms-2 mt-5" style="color: #D8682F;">
+            Wishlist
+            <img src="/images/cd3.gif">
+        </span>
+         <% if (!films || films.length === 0) { %>
+                <p class="text-black">You don't have any films saved yet.</p>
             <% } else { %>
-                <% films.forEach(film => { %>
-                    <%= film.title %>
-                <% }) %>
+                <table class="table table-hover rounded-5 w-75 border border-black">
+                    <% films.forEach(film => { %>
+                        <tr class="align-middle">
+                            <td><%= film.title %></td>
+                            <td><%= film.description %></td>
+                            <td>
+                                <form action="/wishlist/delete" method="POST">
+                                    <input type="hidden" name="url" value="<%= request.originalUrl %>">
+                                    <input type="hidden" name="filmId" value="<%= film.film_id %>">
+                                    <button class="btn bordered bg-danger rounded-pill text-black">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </table>
             <% } %>
-        </p>
     </body>
 </html>

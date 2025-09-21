@@ -3,10 +3,10 @@ const pool = require('../db/sql');
 const inventoryDao = {
     get: (filmId, callback) => {
         pool.query(`
-            SELECT store_id, COUNT(inventory_id) AS inventory_count
+            SELECT COUNT(inventory_id) AS inventory_count
             FROM inventory
             WHERE film_id = ?
-            GROUP BY store_id;
+            GROUP BY film_id
             `,
             filmId,
             (error, result) => {
